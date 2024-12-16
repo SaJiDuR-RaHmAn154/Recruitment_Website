@@ -68,7 +68,7 @@ const Application = () => {
         <form onSubmit={handleApplication} className="space-y-4">
           <div className="space-y-1">
             <label htmlFor="name" className="block font-semibold">
-              Your Name <span className="text-red-500">*</span>
+              Name <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
@@ -83,7 +83,7 @@ const Application = () => {
 
           <div className="space-y-1">
             <label htmlFor="email" className="block font-semibold">
-              Your Email Address <span className="text-red-500">*</span>
+              Email Address <span className="text-red-500">*</span>
             </label>
             <input
               type="email"
@@ -97,22 +97,8 @@ const Application = () => {
           </div>
 
           <div className="space-y-1">
-            <label htmlFor="address" className="block font-semibold">
-              Your Address <span className="text-gray-500">(Optional)</span>
-            </label>
-            <input
-              type="text"
-              id="address"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              placeholder="Enter your address"
-              className="w-full border border-gray-300 p-2"
-            />
-          </div>
-
-          <div className="space-y-1">
             <label htmlFor="phone" className="block font-semibold">
-              Phone Number <span className="text-red-500">*</span>
+              Phone Number <span className="text-gray-500">(Optional)</span>
             </label>
             <input
               type="text"
@@ -121,9 +107,24 @@ const Application = () => {
               onChange={(e) => setPhone(e.target.value)}
               placeholder="Enter your phone number"
               className="w-full border border-gray-300 p-2"
+            />
+          </div>
+
+          <div className="space-y-1">
+            <label htmlFor="address" className="block font-semibold">
+              Your Address <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              id="address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              placeholder="Enter your address"
+              className="w-full border border-gray-300 p-2"
               required
             />
           </div>
+
 
           <div className="space-y-1">
             <label htmlFor="coverLetter" className="block font-semibold">

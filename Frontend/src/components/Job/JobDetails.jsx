@@ -30,24 +30,24 @@ const JobDetails = () => {
   return (
     <section className="bg-gray-100 min-h-screen flex justify-center items-center">
       <div className="w-full max-w-3xl bg-white p-8 shadow-md rounded-lg flex flex-col items-center">
-        <h2 className="text-2xl font-bold text-center mb-6">Job Details</h2>
+        <h2 className="text-3xl font-bold text-center mb-6">Job Details</h2>
         <div className="w-full flex flex-col gap-5">
-          <p className="text-lg font-bold text-green-800">
+          <p className="text-2xl font-bold text-green-800">
             Title: <span className="text-black font-medium"> {job.title}</span>
           </p>
-          <p className="text-lg font-bold text-green-800">
+          <p className="text-2xl font-bold text-green-800">
             Category: <span className="text-black font-medium">{job.category}</span>
           </p>
-          <p className="text-lg font-bold text-green-800">
+          <p className="text-2xl font-bold text-green-800">
             City: <span className="text-black font-medium">{job.city}</span>
           </p>
-          <p className="text-lg font-bold text-green-800">
+          <p className="text-2xl font-bold text-green-800">
             Country: <span className="text-black font-medium">{job.country}</span>
           </p>
-          <p className="text-lg font-bold text-green-800">
+          <p className="text-2xl font-bold text-green-800">
             Location: <span className="text-black font-medium">{job.location}</span>
           </p>
-          <p className="text-lg font-bold text-green-800">
+          <p className="text-2xl font-bold text-green-800">
             Salary: {" "}
             {job.fixedSalary ? (
               <span className="text-black font-medium">{job.fixedSalary}</span>
@@ -57,7 +57,7 @@ const JobDetails = () => {
               </span>
             )}
           </p>
-          <p className="text-lg font-bold text-green-800">
+          <p className="text-2xl font-bold text-green-800">
             Description: <span className="text-black font-medium">{job.description ? job.description : "Not Provided"}</span>
           </p>
           {user && user.role === "Employer" ? null : (

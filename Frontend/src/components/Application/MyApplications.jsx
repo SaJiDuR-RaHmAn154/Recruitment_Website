@@ -171,7 +171,7 @@ const JobSeekerCard = ({
           </p>
           <p>
             <span>Address:</span>{" "}
-            {element.address ? element.address : "Not Provided"}
+            {element.address}
           </p>
           <p>
             <span>CoverLetter:</span>{" "}
