@@ -14,6 +14,8 @@ const MyProfile = () => {
     confirmPassword: "",
   });
 
+  const [changePassword, setChangePassword] = useState(false);
+
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -28,8 +30,10 @@ const MyProfile = () => {
       formDataToSend.append("name", formData.name);
       formDataToSend.append("email", formData.email);
       formDataToSend.append("phone", formData.phone);
-      formDataToSend.append("password", formData.password);
-      formDataToSend.append("confirmPassword", formData.confirmPassword);
+      if (changePassword) {
+        formDataToSend.append("password", formData.password);
+        formDataToSend.append("confirmPassword", formData.confirmPassword);
+      }
 
       const { data } = await axios.put(
         "http://localhost:4000/api/v1/user/updateProfile",
@@ -55,11 +59,8 @@ const MyProfile = () => {
         <h2 className="text-3xl font-bold mb-6 text-center">Update Profile</h2>
         <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <form onSubmit={handleSubmit} className="space-y-4">
-          
             <div>
-              <label className="block text-gray-700 font-bold mb-2">
-                Name
-              </label>
+              <label className="block text-gray-700 font-bold mb-2">Name</label>
               <input
                 type="text"
                 name="name"
@@ -69,9 +70,7 @@ const MyProfile = () => {
               />
             </div>
             <div>
-              <label className="block text-gray-700 font-bold mb-2">
-                Email
-              </label>
+              <label className="block text-gray-700 font-bold mb-2">Email</label>
               <input
                 type="email"
                 name="email"
@@ -81,9 +80,7 @@ const MyProfile = () => {
               />
             </div>
             <div>
-              <label className="block text-gray-700 font-bold mb-2">
-                Phone
-              </label>
+              <label className="block text-gray-700 font-bold mb-2">Phone</label>
               <input
                 type="text"
                 name="phone"
@@ -93,27 +90,54 @@ const MyProfile = () => {
               />
             </div>
             <div>
-              <label className="block text-gray-700 font-bold mb-2">
-                Password
-              </label>
-              <input
-                type="password"
-                name="password"
-                onChange={handleInputChange}
-                className="w-full border border-gray-300 p-2 rounded"
-              />
+              <label className="block text-gray-700 font-bold mb-2">Change Password?</label>
+              <div className="flex items-center space-x-4">
+                <label className="inline-flex items-center">
+                  <input
+                    type="radio"
+                    name="changePassword"
+                    checked={changePassword}
+                    onChange={() => setChangePassword(true)}
+                    className="form-radio text-blue-500"
+                  />
+                  <span className="ml-2">Yes</span>
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="radio"
+                    name="changePassword"
+                    checked={!changePassword}
+                    onChange={() => setChangePassword(false)}
+                    className="form-radio text-blue-500"
+                  />
+                  <span className="ml-2">No</span>
+                </label>
+              </div>
             </div>
-            <div>
-              <label className="block text-gray-700 font-bold mb-2">
-                Confirm Password
-              </label>
-              <input
-                type="password"
-                name="confirmPassword"
-                onChange={handleInputChange}
-                className="w-full border border-gray-300 p-2 rounded"
-              />
-            </div>
+
+            {changePassword && (
+              <>
+                <div>
+                  <label className="block text-gray-700 font-bold mb-2">New Password</label>
+                  <input
+                    type="password"
+                    name="password"
+                    onChange={handleInputChange}
+                    className="w-full border border-gray-300 p-2 rounded"
+                  />
+                </div>
+                <div>
+                  <label className="block text-gray-700 font-bold mb-2">Confirm Password</label>
+                  <input
+                    type="password"
+                    name="confirmPassword"
+                    onChange={handleInputChange}
+                    className="w-full border border-gray-300 p-2 rounded"
+                  />
+                </div>
+              </>
+            )}
+
             <div className="flex items-center justify-center">
               <button
                 type="submit"
