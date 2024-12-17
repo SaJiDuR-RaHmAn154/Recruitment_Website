@@ -3,6 +3,7 @@ import { Context } from "../../main";
 import { useNavigate } from "react-router-dom";
 import ScrollToTopButton from "../../components/ReturnToTop";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const MyProfile = () => {
   const { isAuthorized, user, setUser } = useContext(Context);
@@ -10,7 +11,7 @@ const MyProfile = () => {
     name: user.name,
     email: user.email,
     phone: user.phone,
-    password: "",
+    newPassword: "",
     confirmPassword: "",
   });
 
@@ -24,30 +25,42 @@ const MyProfile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formDataToSend = {
+      userId: user._id,
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+    };
+  
+    if (changePassword) {
+      formDataToSend.newPassword = formData.newPassword;
+      formDataToSend.confirmPassword = formData.confirmPassword;
+    }
+  
     try {
-      const formDataToSend = new FormData();
-      formDataToSend.append("userId", user._id);
-      formDataToSend.append("name", formData.name);
-      formDataToSend.append("email", formData.email);
-      formDataToSend.append("phone", formData.phone);
-      if (changePassword) {
-        formDataToSend.append("password", formData.password);
-        formDataToSend.append("confirmPassword", formData.confirmPassword);
-      }
-
       const { data } = await axios.put(
         "http://localhost:4000/api/v1/user/updateProfile",
         formDataToSend,
-        { headers: { "Content-Type": "multipart/form-data" } }
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          withCredentials: true, // Send cookies for authentication
+        }
       );
-
+  
+      // Update user state and show success notification
       setUser(data.user);
-      alert("Profile updated successfully");
+      toast.success("Profile updated successfully");
+      navigateTo("/profile");
     } catch (error) {
-      console.error(error);
-      alert("Error updating profile");
+      // Handle error more effectively
+      console.error("Update profile error:", error);
+      const errorMessage = error.response?.data?.message || "Error updating profile";
+      toast.error(errorMessage);
     }
   };
+  
 
   if (!isAuthorized) {
     navigateTo("/");
@@ -70,7 +83,9 @@ const MyProfile = () => {
               />
             </div>
             <div>
-              <label className="block text-gray-700 font-bold mb-2">Email</label>
+              <label className="block text-gray-700 font-bold mb-2">
+                Email
+              </label>
               <input
                 type="email"
                 name="email"
@@ -80,7 +95,9 @@ const MyProfile = () => {
               />
             </div>
             <div>
-              <label className="block text-gray-700 font-bold mb-2">Phone</label>
+              <label className="block text-gray-700 font-bold mb-2">
+                Phone
+              </label>
               <input
                 type="text"
                 name="phone"
@@ -90,7 +107,9 @@ const MyProfile = () => {
               />
             </div>
             <div>
-              <label className="block text-gray-700 font-bold mb-2">Change Password?</label>
+              <label className="block text-gray-700 font-bold mb-2">
+                Change Password?
+              </label>
               <div className="flex items-center space-x-4">
                 <label className="inline-flex items-center">
                   <input
@@ -118,19 +137,25 @@ const MyProfile = () => {
             {changePassword && (
               <>
                 <div>
-                  <label className="block text-gray-700 font-bold mb-2">New Password</label>
+                  <label className="block text-gray-700 font-bold mb-2">
+                    New Password
+                  </label>
                   <input
                     type="password"
-                    name="password"
+                    name="newPassword"
+                    value={formData.newPassword}
                     onChange={handleInputChange}
                     className="w-full border border-gray-300 p-2 rounded"
                   />
                 </div>
                 <div>
-                  <label className="block text-gray-700 font-bold mb-2">Confirm Password</label>
+                  <label className="block text-gray-700 font-bold mb-2">
+                    Confirm Password
+                  </label>
                   <input
                     type="password"
                     name="confirmPassword"
+                    value={formData.confirmPassword}
                     onChange={handleInputChange}
                     className="w-full border border-gray-300 p-2 rounded"
                   />
