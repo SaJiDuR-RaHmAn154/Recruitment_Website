@@ -178,5 +178,4 @@ const MyProfile = () => {
     </section>
   );
 };
-
 export default MyProfile;

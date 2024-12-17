@@ -96,17 +96,15 @@ export const updateProfile = catchAsyncError(async (req, res, next) => {
         if (newPassword !== confirmPassword) {
             return next(new ErrorHandler("Passwords do not match", 400));
         }
-
-        // Hash the new password
+    
         user.password = confirmPassword;
     }
 
-    // Update other fields if provided
     if (name) user.name = name;
     if (email) user.email = email;
     if (phone) user.phone = phone;
 
-    // Save the user to apply updates
+    // Saving the user to apply updates
     await user.save();
 
     res.status(200).json({
