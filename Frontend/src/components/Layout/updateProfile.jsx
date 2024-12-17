@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../../main";
+import { useNavigate } from "react-router-dom";
 import ScrollToTopButton from "../../components/ReturnToTop";
 import axios from "axios";
 
@@ -12,15 +13,12 @@ const MyProfile = () => {
     password: "",
     confirmPassword: "",
   });
-  const [profilePic, setProfilePic] = useState(null);
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleFileChange = (e) => {
-    setProfilePic(e.target.files[0]);
-  };
+  const navigateTo = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,7 +30,6 @@ const MyProfile = () => {
       formDataToSend.append("phone", formData.phone);
       formDataToSend.append("password", formData.password);
       formDataToSend.append("confirmPassword", formData.confirmPassword);
-      if (profilePic) formDataToSend.append("profilePic", profilePic);
 
       const { data } = await axios.put(
         "http://localhost:4000/api/v1/user/updateProfile",
@@ -49,31 +46,16 @@ const MyProfile = () => {
   };
 
   if (!isAuthorized) {
-    return <div>Please log in to view your profile.</div>;
+    navigateTo("/");
   }
 
   return (
     <section className="jobDetail page mb-10">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-6 text-center">My Profile</h2>
+      <div className="container mx-auto px-4 mt-12">
+        <h2 className="text-3xl font-bold mb-6 text-center">Update Profile</h2>
         <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="flex flex-col items-center">
-              <label
-                htmlFor="profilePic"
-                className="block text-gray-700 font-bold mb-2"
-              >
-                Profile Picture
-              </label>
-              <input
-                type="file"
-                id="profilePic"
-                name="profilePic"
-                accept="image/*"
-                onChange={handleFileChange}
-                className="border border-gray-300 p-2 rounded"
-              />
-            </div>
+          
             <div>
               <label className="block text-gray-700 font-bold mb-2">
                 Name
@@ -132,10 +114,10 @@ const MyProfile = () => {
                 className="w-full border border-gray-300 p-2 rounded"
               />
             </div>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-center">
               <button
                 type="submit"
-                className="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700"
+                className="bg-blue-500 mt-4 w-full text-white font-bold py-3 rounded hover:bg-blue-700"
               >
                 Update Profile
               </button>
