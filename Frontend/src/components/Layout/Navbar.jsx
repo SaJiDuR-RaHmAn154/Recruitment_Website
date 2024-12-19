@@ -34,17 +34,17 @@ const Navbar = () => {
   };
 
   return (
-    <header className="bg-white mr-6 pt-1">
-      <div className="container mx-auto px-4 lg:px-8">
+    <header className="bg-white mr-4 pt-1">
+      <div className="container mx-auto px-3 lg:px-8">
         <nav
           className={
             isAuthorized ? "flex justify-between items-center pt-5" : "hidden"
           }
         >
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-1">
             <a href="/">
-              <img src="/JobLogo.jpg" alt="Job Finder" className="h-16 mb-4 ml-4" />
+              <img src="/JobLogo.jpg" alt="Job Finder" className="h-16 mb-4 ml-1" />
             </a>
             <a href="/" className="text-2xl font-black mb-3">
               Job <span className="text-[#036aa1da]">Finder</span>
@@ -84,7 +84,7 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink to="/profile" className={({ isActive }) => isActive ? "text-[#036aa1da]" : ""}>
-                My Profile
+                Profile
               </NavLink>
             </li>
             <li>

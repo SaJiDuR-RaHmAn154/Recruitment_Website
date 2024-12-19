@@ -73,7 +73,7 @@ const MyProfile = () => {
         <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-gray-700 font-bold mb-2">Name</label>
+              <label className="block text-gray-700 text-xl font-bold mb-2">Name</label>
               <input
                 type="text"
                 name="name"
@@ -83,7 +83,7 @@ const MyProfile = () => {
               />
             </div>
             <div>
-              <label className="block text-gray-700 font-bold mb-2">
+              <label className="block text-gray-700 text-xl font-bold mb-2">
                 Email
               </label>
               <input
@@ -95,7 +95,7 @@ const MyProfile = () => {
               />
             </div>
             <div>
-              <label className="block text-gray-700 font-bold mb-2">
+              <label className="block text-gray-700 text-xl font-bold mb-2">
                 Phone
               </label>
               <input
@@ -107,10 +107,10 @@ const MyProfile = () => {
               />
             </div>
             <div>
-              <label className="block text-gray-700 font-bold mb-2">
-                Change Password?
+              <label className="block text-gray-700 font-bold mb-2 mt-4 text-xl">
+              Do you want to change your password?
               </label>
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-4 mb-4">
                 <label className="inline-flex items-center">
                   <input
                     type="radio"
@@ -119,7 +119,7 @@ const MyProfile = () => {
                     onChange={() => setChangePassword(true)}
                     className="form-radio text-blue-500"
                   />
-                  <span className="ml-2">Yes</span>
+                  <span className="ml-2 text-xl font-semibold">Yes</span>
                 </label>
                 <label className="inline-flex items-center">
                   <input
@@ -129,7 +129,7 @@ const MyProfile = () => {
                     onChange={() => setChangePassword(false)}
                     className="form-radio text-blue-500"
                   />
-                  <span className="ml-2">No</span>
+                  <span className="ml-2 text-xl font-semibold">No</span>
                 </label>
               </div>
             </div>
@@ -137,7 +137,7 @@ const MyProfile = () => {
             {changePassword && (
               <>
                 <div>
-                  <label className="block text-gray-700 font-bold mb-2">
+                  <label className="block text-gray-700 text-xl font-bold mb-2">
                     New Password
                   </label>
                   <input
@@ -149,7 +149,7 @@ const MyProfile = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-gray-700 font-bold mb-2">
+                  <label className="block text-gray-700 text-xl font-bold mb-2">
                     Confirm Password
                   </label>
                   <input

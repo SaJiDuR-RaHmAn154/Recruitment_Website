@@ -57,7 +57,7 @@ const Jobs = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-4 text-center">Filter Jobs</h2>
           {/* Filters Section */}
-          <div className="flex flex-row gap-4">
+          <div className="flex flex-row gap-3">
             <input
               type="text"
               placeholder="Search by Job Title"
@@ -69,9 +69,9 @@ const Jobs = () => {
             <select
               value={categoryFilter}
               onChange={(e) => setCategoryFilter(e.target.value)}
-              className="border border-black p-2 rounded-md font-semibold w-1/3 md:w-1/2"
+              className="border border-black p-2 rounded-md font-semibold w-1/2"
             >
-              <option value="">Filter by Job Category</option>
+              <option value="">Filter by Category</option>
               <option value="Artificial Intelligence">
                 Artificial Intelligence
               </option>
