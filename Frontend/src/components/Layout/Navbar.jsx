@@ -38,7 +38,7 @@ const Navbar = () => {
       <div className="container mx-auto px-3 lg:px-8">
         <nav
           className={
-            isAuthorized ? "flex justify-between items-center pt-5" : "hidden"
+            isAuthorized ? "flex justify-between items-center pt-5 " : "hidden"
           }
         >
           {/* Logo */}
@@ -52,7 +52,7 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Menu */}
-          <ul className={`hidden lg:flex space-x-8 text-lg font-bold`}>
+          <ul className={`hidden xl:flex space-x-8 text-lg font-bold`}>
             <li>
               <NavLink to="/" className={({ isActive }) => isActive ? "text-[#036aa1da]" : ""}>
                 Home
@@ -99,7 +99,7 @@ const Navbar = () => {
 
 
             {/* Drop-Down menu in small devices */}
-          <div className="lg:hidden block">
+          <div className="xl:hidden block">
             <button onClick={handleToggler}>
               {show ? (
                 <FaXmark className="w-6 h-6" />
@@ -114,7 +114,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {show && (
-          <ul className={`flex flex-col space-y-4 bg-black text-white text-lg font-bold p-4  lg:hidden`}>
+          <ul className={`flex flex-col space-y-4 bg-black text-white text-lg font-bold p-4 2xl:hidden`}>
             <li>
               <NavLink to="/" onClick={handleToggler} className={`hover:text-[#036aa1da]`}>
                 Home
