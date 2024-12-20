@@ -358,11 +358,11 @@ p {
 }
 .categories .banner .card {
   width: 340px;
-  padding: 28px 27px;
+  padding: 28px 28px;
   display: flex;
   align-items: center;
   border-radius: 10px;
-  gap: 10px;
+  gap: 8px;
   background: #f1f3f6;
 }
 .categories .banner .card:hover {
@@ -431,7 +431,7 @@ p {
   width: 340px;
   display: flex;
   flex-direction: column;
-  background: #fff;
+  background: #f1f3f6;
   padding: 20px;
   border-radius: 10px;
   gap: 15px;
