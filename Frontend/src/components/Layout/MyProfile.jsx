@@ -16,7 +16,7 @@ const MyProfile = () => {
   return (
     <section className="bg-gray-100 min-h-screen flex justify-center items-center">
       <div className="w-full max-w-2xl bg-white p-8 shadow-md rounded-lg flex flex-col items-center">
-        <h2 className="text-2xl font-bold text-center mb-6">My Profile</h2>
+        <h2 className="text-2xl font-bold text-center mb-6">User Profile</h2>
         <div className="w-full flex flex-col gap-5">
           <div className="ml-64">
             <ProfilePicture />

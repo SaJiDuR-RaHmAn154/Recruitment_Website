@@ -35,18 +35,18 @@ const Navbar = () => {
 
   return (
     <header className="bg-white mr-4 pt-1">
-      <div className="container mx-auto px-3 lg:px-8">
+      <div className="container mx-auto px-3 lg:px-4">
         <nav
           className={
             isAuthorized ? "flex justify-between items-center pt-5 " : "hidden"
           }
         >
           {/* Logo */}
-          <div className="flex items-center space-x-1">
+          <div className="flex items-center space-x-1 mr-4">
             <a href="/">
-              <img src="/JobLogo.jpg" alt="Job Finder" className="h-16 mb-4 ml-1" />
+              <img src="/JobLogo.jpg" alt="Job Finder" className="h-16 mb-4" />
             </a>
-            <a href="/" className="text-2xl font-black mb-3">
+            <a href="/" className="text-2xl font-black mb-3 ">
               Job <span className="text-[#036aa1da]">Finder</span>
             </a>
           </div>
@@ -146,7 +146,7 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink to="/profile" onClick={handleToggler} className={`hover:text-[#036aa1da]`}>
-                My Profile
+                Profile
               </NavLink>
             </li>
             <li>
