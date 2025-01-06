@@ -2,7 +2,6 @@ import { catchAsyncError } from "../middlewares/catchAsyncError.js";
 import ErrorHandler from "../middlewares/error.js";
 import { User } from "../models/userSchema.js";
 import { sendToken } from "../utils/jwtToken.js";
-import bcrypt from "bcrypt";
 
 // Register
 export const register = catchAsyncError(async (req, res, next) => {
